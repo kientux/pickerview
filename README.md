@@ -1,3 +1,3 @@
 # CZPickerView
 
-A description of this package.
+Swift/modified version of CZPickerView.
