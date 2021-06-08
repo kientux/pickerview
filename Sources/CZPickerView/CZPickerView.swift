@@ -81,7 +81,7 @@ open class CZPickerView: UIView {
     public var backgroundDimmingViewAlpha: CGFloat = 0.7
     
     /** Corner radius of container view. Default 16 */
-    public var containerCornerRadius: CGFloat = 20
+    public var containerCornerRadius: CGFloat = 16
 
     /** whether allow selection of multiple items/rows, default NO, if this
      property is YES, then footerView will be shown */
@@ -817,7 +817,12 @@ extension CZPickerView: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let numberOfRows = dataSource?.numberOfRows(in: self) ?? 0
+        guard let dataSource = dataSource else {
+            return
+        }
+        
+        let numberOfRows = dataSource.numberOfRows(in: self) + 1
+        
         if allowMultipleSelection {
             if hasSelectAllOption {
                 if indexPath.row == 0 { //First row will always be Select All option
