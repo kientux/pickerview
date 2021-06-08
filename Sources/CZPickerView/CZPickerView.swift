@@ -356,7 +356,7 @@ open class CZPickerView: UIView {
     }
     
     private func calculateContainerViewHeight() -> CGFloat {
-        guard let dataSource = dataSource else {
+        guard let dataSource = dataSource, let window = UIApplication.shared.keyWindow else {
             return 0
         }
         
@@ -366,9 +366,9 @@ open class CZPickerView: UIView {
         let tableViewHeight = numberOfRows == 0 ? 200.0 : CZPickerView.CZP_ROW_HEIGHT * numberOfRows - 1 // minus separator
         let footerHeight = needFooterView ? CZPickerView.CZP_FOOTER_HEIGHT : 0
         let height = tableViewHeight + footerHeight
-            + (customHeaderView != nil && customHeaderView!.frame.size.height > 0 ? customHeaderView!.frame.size.height : CZPickerView.CZP_HEADER_HEIGHT)
+            + (customHeaderView != nil ? customHeaderView!.frame.height : CZPickerView.CZP_HEADER_HEIGHT)
             + (showSearchView ? CZPickerView.CZP_SEARCH_HEIGHT : 0)
-        return min(height, UIApplication.shared.keyWindow!.bounds.size.height * 0.75)
+        return min(height, window.bounds.size.height * 0.75)
     }
     
     private func buildBackgroundDimmingView() -> UIView {
@@ -586,7 +586,10 @@ open class CZPickerView: UIView {
             needFooterView = true
         }
 
-        let mainWindow = UIApplication.shared.keyWindow!
+        guard let mainWindow = UIApplication.shared.keyWindow else {
+            return
+        }
+        
         self.frame = mainWindow.frame
         mainWindow.addSubview(self)
         autoPinEdgesToSuperviewEdges()
