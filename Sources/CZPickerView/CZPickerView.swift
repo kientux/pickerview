@@ -181,7 +181,7 @@ open class CZPickerView: UIView {
         isLoading = false
         loadingText = "Đang tìm kiếm"
 
-        headerTitleColor = .white
+        headerTitleColor = .darkText
         headerBackgroundColor = .white
         
         cancelButtonNormalColor = .primary
@@ -476,7 +476,14 @@ open class CZPickerView: UIView {
         
         let searchField = UITextField()
         self.searchField = searchField
-        searchField.placeholder = searchPlaceHolder
+        let searchAttrString = NSMutableAttributedString(
+            string: searchPlaceHolder ?? "Search",
+            attributes: [
+                .foregroundColor: UIColor.gray,
+                .font: defaultFont
+            ]
+        )
+        searchField.attributedPlaceholder = searchAttrString
         searchField.textColor = .text
         searchField.font = defaultFont
         searchField.autocorrectionType = .no
