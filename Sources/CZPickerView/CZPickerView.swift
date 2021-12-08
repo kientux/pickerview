@@ -53,6 +53,7 @@ open class CZPickerView: UIView {
 
     public var headerTitle: String?
     public var searchPlaceHolder: String?
+    public var initialSearchText: String?
 
     public var requiredSelect: Bool = false
 
@@ -488,6 +489,7 @@ open class CZPickerView: UIView {
         searchField.font = defaultFont
         searchField.autocorrectionType = .no
         searchField.clearButtonMode = .whileEditing
+        searchField.text = initialSearchText
         
         searchField.addTarget(self,
                               action: #selector(searchTextFieldEditingChanged(_:)),
@@ -505,6 +507,7 @@ open class CZPickerView: UIView {
         shadowView.addSubview(searchIcon)
         searchIcon.autoPinEdgesToSuperviewEdges(with: .left(10), excludingEdge: .trailing)
         searchIcon.autoPinEdge(.trailing, to: .leading, of: searchField, withOffset: -8.0)
+        searchIcon.autoSetDimension(.width, toSize: 24)
         
         return view
     }
