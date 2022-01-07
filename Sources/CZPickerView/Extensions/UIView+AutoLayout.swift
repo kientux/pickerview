@@ -79,7 +79,8 @@ extension UIView {
     @discardableResult
     func autoPinEdge(toSuperviewEdge edge: AutoLayoutEdge,
                      withInset inset: CGFloat = 0.0,
-                     relation: NSLayoutConstraint.Relation = .equal) -> NSLayoutConstraint {
+                     relation: NSLayoutConstraint.Relation = .equal,
+                     priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         precondition(superview != nil, "Superview must not be nil")
         translatesAutoresizingMaskIntoConstraints = false
         let c = NSLayoutConstraint(item: self,
@@ -89,6 +90,7 @@ extension UIView {
                                    attribute: edge.constraintAttribute,
                                    multiplier: 1,
                                    constant: inset)
+        c.priority = priority
         superview!.addConstraint(c)
         return c
     }

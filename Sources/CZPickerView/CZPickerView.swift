@@ -275,10 +275,12 @@ open class CZPickerView: UIView {
             emptyView.autoCenterInSuperview()
             emptyView.autoPinEdge(toSuperviewEdge: .leading,
                                   withInset: 16,
-                                  relation: .greaterThanOrEqual)
+                                  relation: .greaterThanOrEqual,
+                                  priority: .init(999))
             emptyView.autoPinEdge(toSuperviewEdge: .trailing,
                                   withInset: 16,
-                                  relation: .greaterThanOrEqual)
+                                  relation: .greaterThanOrEqual,
+                                  priority: .init(999))
             emptyView.isHidden = true
         }
         
@@ -366,6 +368,10 @@ open class CZPickerView: UIView {
         
         let tableViewHeight = numberOfRows == 0 ? 200.0 : CZPickerView.CZP_ROW_HEIGHT * numberOfRows - 1 // minus separator
         let footerHeight = needFooterView ? CZPickerView.CZP_FOOTER_HEIGHT : 0
+
+        customHeaderView?.setNeedsLayout()
+        customHeaderView?.layoutIfNeeded()
+
         let height = tableViewHeight + footerHeight
             + (customHeaderView != nil ? customHeaderView!.frame.height : CZPickerView.CZP_HEADER_HEIGHT)
             + (showSearchView ? CZPickerView.CZP_SEARCH_HEIGHT : 0)
