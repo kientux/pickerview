@@ -1,3 +1,3 @@
 # CZPickerView
 
-Swift/modified version of CZPickerView.
+Swift/modified version of CZPickerView
