@@ -572,8 +572,8 @@ open class CZPickerView: UIView {
                     selectedRows = newSelectedRows
                 }
                 self.delegate?.czpickerView(self, didConfirmWithItemsAtRows: selectedRows)
-            } else if !self.allowMultipleSelection {
-                self.delegate?.czpickerViewDidClickConfirmButton(self)
+            } else if let confirmAction = self.delegate?.czpickerViewDidClickConfirmButton {
+                confirmAction(self)
             } else if !self.allowMultipleSelection {
                 if self.selectedIndexPaths.count > 0 {
                     let row = self.selectedIndexPaths[0].row
@@ -907,7 +907,7 @@ extension CZPickerView: UITableViewDelegate {
                     cell?.accessoryType = .checkmark
                 }
                 
-                self.delegate?.czpickerView(self, didConfirmWithItemAtRow: indexPath.row)
+                self.delegate?.czpickerView(self, didSelectItemAtRow: indexPath.row)
             }
         }
     }
