@@ -19,15 +19,11 @@ public protocol CZPickerViewDelegate: AnyObject {
 
     /**
      delegate method for picking multiple items,
-     implement this method if allowMultipleSelection is YES,
-     rows is an array of NSNumbers
+     implement this method if `allowMultipleSelection` is true
      */
     func czpickerView(_ pickerView: CZPickerView, didConfirmWithItemsAtRows rows: [Int])
 
-    /** delegate method for clicking confirm button
-     * Note: if this method is implemented then
-     * -czpickerView:didConfirmWithItemAtRow: won't fire
-     * when click confirm button */
+    /** delegate method for clicking confirm button in case `needFooterView` is true */
     func czpickerViewDidClickConfirmButton(_ pickerView: CZPickerView)
 
     /** delegate method for canceling */

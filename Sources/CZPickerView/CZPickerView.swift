@@ -572,8 +572,8 @@ open class CZPickerView: UIView {
                     selectedRows = newSelectedRows
                 }
                 self.delegate?.czpickerView(self, didConfirmWithItemsAtRows: selectedRows)
-            } else if let confirmAction = self.delegate?.czpickerViewDidClickConfirmButton {
-                confirmAction(self)
+            } else if self.needFooterView {
+                self.delegate?.czpickerViewDidClickConfirmButton(self)
             } else if !self.allowMultipleSelection {
                 if self.selectedIndexPaths.count > 0 {
                     let row = self.selectedIndexPaths[0].row
