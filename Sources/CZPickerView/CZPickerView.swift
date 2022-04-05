@@ -87,6 +87,9 @@ open class CZPickerView: UIView {
     /** whether allow selection of multiple items/rows, default NO, if this
      property is YES, then footerView will be shown */
     public var allowMultipleSelection: Bool = false
+    
+    /** Allows to deselect when in single selection mode */
+    public var allowDeselection: Bool = false
 
     public var hasSelectAllOption: Bool = false
     public var selectAllRowTitle: String?
@@ -897,6 +900,12 @@ extension CZPickerView: UITableViewDelegate {
                     self.delegate?.czpickerView(self, didConfirmWithItemAtRow: indexPath.row)
                 }
             } else {
+                if allowDeselection && selectedIndexPaths.contains(indexPath) {
+                    selectedIndexPaths.removeAll()
+                    cell?.accessoryType = .none
+                    return
+                }
+                
                 if !selectedIndexPaths.contains(indexPath) {
                     for i in 0..<numberOfRows {
                         let ip = IndexPath(row: i, section: 0)
@@ -907,7 +916,7 @@ extension CZPickerView: UITableViewDelegate {
                     cell?.accessoryType = .checkmark
                 }
                 
-                self.delegate?.czpickerView(self, didSelectItemAtRow: indexPath.row)
+                self.delegate?.czpickerView(self, didConfirmWithItemAtRow: indexPath.row)
             }
         }
     }

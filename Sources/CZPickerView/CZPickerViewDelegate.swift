@@ -11,9 +11,6 @@ import UIKit
 
 public protocol CZPickerViewDelegate: AnyObject {
 
-    /** delegate method for selecting one item */
-    func czpickerView(_ pickerView: CZPickerView, didSelectItemAtRow row: Int)
-
     /** delegate method for picking one item */
     func czpickerView(_ pickerView: CZPickerView, didConfirmWithItemAtRow row: Int)
 
@@ -23,7 +20,7 @@ public protocol CZPickerViewDelegate: AnyObject {
      */
     func czpickerView(_ pickerView: CZPickerView, didConfirmWithItemsAtRows rows: [Int])
 
-    /** delegate method for clicking confirm button in case `needFooterView` is true */
+    /** delegate method for clicking confirm button */
     func czpickerViewDidClickConfirmButton(_ pickerView: CZPickerView)
 
     /** delegate method for canceling */
@@ -38,8 +35,6 @@ public protocol CZPickerViewDelegate: AnyObject {
 
 /** Default implementations */
 public extension CZPickerViewDelegate {
-    
-    func czpickerView(_ pickerView: CZPickerView, didSelectItemAtRow row: Int) {}
     
     func czpickerView(_ pickerView: CZPickerView, didConfirmWithItemAtRow row: Int) {}
     
