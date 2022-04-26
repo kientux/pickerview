@@ -510,7 +510,7 @@ open class CZPickerView: UIView {
         searchField.autoPinEdgesToSuperviewEdges(with: .right(10), excludingEdge: .leading)
         
         let searchIcon = UIImageView(image: UIImage(named: "ic_picker_view_search",
-                                                    in: Bundle.module,
+                                                    in: Bundle(for: CZPickerView.self),
                                                     compatibleWith: nil))
         searchIcon.contentMode = .center
         shadowView.addSubview(searchIcon)
