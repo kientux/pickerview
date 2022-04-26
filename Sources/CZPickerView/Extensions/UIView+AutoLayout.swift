@@ -175,6 +175,6 @@ extension UIView {
 
 extension UIView {
     static func nib(name: String? = nil) -> UINib {
-        UINib(nibName: name ?? String(describing: self), bundle: Bundle.module)
+        UINib(nibName: name ?? String(describing: self), bundle: Bundle(for: CZPickerView.self))
     }
 }
