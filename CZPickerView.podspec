@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CZPickerView'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'Swift/modified version of CZPickerView'
 
   s.description      = <<-DESC
