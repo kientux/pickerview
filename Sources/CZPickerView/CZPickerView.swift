@@ -1,9 +1,7 @@
 //
-//  CZPickerView.swift
-//  Sapo
+//  PickerView.swift
 //
 //  Created by Kien Nguyen on 04/06/2021.
-//  Copyright © 2021 Sapo Technology JSC. All rights reserved.
 //
 
 import Foundation
@@ -510,7 +508,7 @@ open class CZPickerView: UIView {
         searchField.autoPinEdgesToSuperviewEdges(with: .right(10), excludingEdge: .leading)
         
         let searchIcon = UIImageView(image: UIImage(named: "ic_picker_view_search",
-                                                    in: Bundle.module,
+                                                    in: Bundle.resource,
                                                     compatibleWith: nil))
         searchIcon.contentMode = .center
         shadowView.addSubview(searchIcon)

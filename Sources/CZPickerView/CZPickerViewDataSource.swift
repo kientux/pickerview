@@ -1,9 +1,7 @@
 //
 //  CZPickerViewDataSource.swift
-//  Sapo
 //
 //  Created by Kien Nguyen on 05/06/2021.
-//  Copyright © 2021 Sapo Technology JSC. All rights reserved.
 //
 
 import Foundation
